@@ -1,23 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gabbar-stakater-nordmart-review
+  name: veeru-inventory
   namespace: openshift-stakater-argocd
   labels:
-    stakater.com/tenant: gabbar
-    stakater.com/env: prod
-    stakater.com/kind: prod
+    stakater.com/tenant: veeru
+    stakater.com/env: base
+    stakater.com/kind: base
 spec:
   destination:
-    namespace: gabbar-prod
+    namespace: veeru-base
     server: 'https://kubernetes.default.svc'
   source:
-    path: 01-gabbar/01-stakater-nordmart-review/prod
+    path: 02-veeru/01-stakater-nordmart-inventory/base
     repoURL: 'https://github.com/stakater/gitops-config-template.git'
-    targetRevision: HEAD
-  project: gabbar
+    targetRevision: main
+  project: veeru
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
-
