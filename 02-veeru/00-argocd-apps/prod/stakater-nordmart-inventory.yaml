@@ -4,19 +4,10 @@ metadata:
   name: veeru-inventory
   namespace: openshift-stakater-argocd
   labels:
-    stakater.com/tenant: veeru
     stakater.com/env: prod
     stakater.com/kind: prod
 spec:
   destination:
     namespace: veeru-prod
-    server: 'https://kubernetes.default.svc'
   source:
     path: 02-veeru/01-stakater-nordmart-inventory/prod
-    repoURL: 'https://github.com/stakater/gitops-config-template.git'
-    targetRevision: main
-  project: veeru
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
